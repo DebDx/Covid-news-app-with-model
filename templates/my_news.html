@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap 4 Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}"/>
+</head>
+<body >
+    <div class="container-fluid cbox">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">My News</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav"></div>
+                <a class="nav-item nav-link" href="/write_news/">Add News</a>
+              </div>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav"></div>
+                  <a class="nav-item nav-link  ml-auto" href="/logout">Log Out</a>
+                </div>
+               
+          </nav> 
+          <div class="row">
+            <div class="col-md-4">
+              
+            </div>
+        <div class="col-md-4">
+          {% if my_news %}   
+            <table class="table table-primary r" cell-padding="5">
+                <tbody>
+            {% for my_new in my_news %}
+                  <tr>
+                    <td scope="row"><h3> <a href="/news/{{ my_new['news_id'] }}">{{my_new['title']}} </a> </h3></td>
+                    <td><a href="/edit-news/{{ my_new['news_id'] }}" class="btn btn-primary float-right">Edit</a>  <a href="/my_news/{{ my_new['news_id'] }}" class="btn btn-danger float-right">Delete</a></td>
+                   </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+         <h3>No blogs have been written by you</h3>
+            {% endif %}
+        </div>
+          </div>
+         
+    </div>
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

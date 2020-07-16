@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap 4 Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}"/>
+</head>
+<body >
+<div class="container-fluid cbox">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+            <a class="navbar-brand" href="#" style="color:black;font-size: 30px;">CovidNews</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav> 
+
+</div>
+    
+<center><hr style="border-top: 4px solid whitesmoke;"></center>
+
+ <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <!-- <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol> -->
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <center><img style="height: 300px;" src="static/css/ko.png" class="img" alt="..."></center>
+              </div>
+              <div class="carousel-item">
+                <center><img style="height: 300px;" src="static/css/hey.png" class="img" alt="..."></center>
+              </div>
+              <div class="carousel-item">
+                <center><img style="height: 300px;" src="static/css/arabica-3.png" class="img" alt="..."></center>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          <center><hr style="border-top: 4px solid whitesmoke; margin-top: 30px;"></center>   
+        
+          <center style="margin:20px;"><h1>News Feed </h1></center><h1>
+            {% if news %}
+                {% for new in news %}
+            <div class="container"style="margin-bottom: 20px;">
+               
+              <center><div class="card">
+                <div class="card-header">
+                    {{new['title']}}
+                </div>
+                <div class="card-body">
+                  <blockquote class="blockquote mb-0">
+                    <p>{{new['body']}}</p>
+                    <footer class="blockquote-footer">Written by <cite title="Source Title">{{new['author']}}</cite></footer>
+                  </blockquote>
+                </div>
+              </div>
+            </center>
+            </div>
+            {% endfor %}
+            {% else %}
+    <center><h3>No blogs have been written yet</h3></center>
+  {% endif %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
